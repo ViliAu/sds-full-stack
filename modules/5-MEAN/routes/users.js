@@ -44,11 +44,11 @@ router.post('/authenticate', async (req, res) => {
                 });
             }
             else {
-                res.status(403).json({success: false, msg: "Incorrect password"});
+                res.json({success: false, msg: "Incorrect password"});
             }
         }
         else {
-            res.status(404).json({success: false, msg: "User not found"});
+            res.json({success: false, msg: "User not found"});
         }
     }
     catch(e) {
