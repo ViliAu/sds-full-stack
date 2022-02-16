@@ -1,1 +1,29 @@
-<p>posts works!</p>
+<div *ngIf="authService.loggedIn()" id="new-post-container">
+    <h2>What's on your mind?</h2>
+    <form class="form-post" (submit)="onPostSubmit()">
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" placeholder=" Post Title (min. 3 characters)" [(ngModel)]="title"
+                name="title">
+        </div>
+        <div class="form-group">
+            <label for="Text">Text</label>
+            <textarea type="text" class="form-control" placeholder=" Post Text (min. 10 characters)" [(ngModel)]="body"
+                name="password" rows="10" style="height:100%; resize: none;"></textarea>
+        </div>
+        <div id="btn-post">
+            <input class="btn btn-post btn-primary" type="submit" value="Post">
+        </div>
+    </form>
+</div>
+
+<div class="post-container" *ngIf="posts">
+    <div *ngFor="let post of posts">
+        <div>
+            <h4>{{post.title}}</h4>
+            <p>{{post.text}}</p>
+            <small>Posted on: {{post.date}}</small>
+            <hr>
+        </div>
+    </div>
+</div>

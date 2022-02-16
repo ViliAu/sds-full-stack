@@ -61,4 +61,4 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), async (re
     res.json({user: req.user});
 });
 
-module.exports = router
+module.exports = router;

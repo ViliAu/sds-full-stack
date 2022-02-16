@@ -23,7 +23,8 @@ app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/user'));
+app.use('/posts', require('./routes/post'));
 
 const port = process.env.PORT | 8080;
 app.listen(port, console.log("Listening on port "+port));

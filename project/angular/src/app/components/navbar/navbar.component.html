@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Poster</a>
+        <a class="navbar-brand" routerLink="/">Poster</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,17 +8,17 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/">Home
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/posts">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <form class="nav-item form-inline navbar-collapse">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search for posts">
+                    <form class="nav-item form-inline navbar-collapse" (submit)="onSearch()">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search for posts" [(ngModel)]="searchTerm" name="searchTerm">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </li>
@@ -26,17 +26,17 @@
 
             <div id="navbarColor01">
                 <ul class="navbar-nav d-flex">
-                    <li *ngIf="authService.loggedIn()" class="nav-item">
-                        <a class="nav-link" href="#">Account</a>
+                    <li *ngIf="authService.loggedIn()" class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" routerLink="/profile">Account</a>
                     </li>
                     <li *ngIf="authService.loggedIn()" class="nav-item">
                         <a (click)="onLogoutClick()" class="nav-link" rhref="#">Logout</a>
                     </li>
-                    <li *ngIf="!authService.loggedIn()" class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                    <li *ngIf="!authService.loggedIn()" class="nav-item" class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" routerLink="/login">Login</a>
                     </li>
-                    <li *ngIf="!authService.loggedIn()" class="nav-item">
-                        <a (click)="onLogoutClick()" class="nav-link" rhref="#">Register</a>
+                    <li *ngIf="!authService.loggedIn()" class="nav-item" class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" routerLink="/register">Register</a>
                     </li>
                 </ul>
             </div>

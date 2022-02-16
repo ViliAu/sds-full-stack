@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
@@ -17,14 +17,14 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post<any>('users/register', user, {headers: headers});
+    return this.http.post<any>('http://localhost:8080/users/register', user, {headers: headers});
   }
 
   authenticateUser(user: any){
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post<any>('users/authenticate', user, {headers: headers});
+    return this.http.post<any>('http://localhost:8080/users/login', user, {headers: headers});
   }
 
   getProfile() {
@@ -34,7 +34,7 @@ export class AuthService {
       'Authorization': this.authToken
     });
     console.log(headers);
-    return this.http.get<any>('users/profile', {headers: headers});
+    return this.http.get<any>('http://localhost:8080/users/profile', {headers: headers});
   }
 
   storeUserData(token: any, user: any) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,8 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  searchTerm: string = "";
+
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -18,5 +22,10 @@ export class NavbarComponent implements OnInit {
 
   onLogoutClick() {
     this.authService.logout();
+  }
+
+  onSearch() {
+    //this.router.navigate(['posts/' + this.searchTerm]);
+    window.location.href = 'posts/' + this.searchTerm;
   }
 }

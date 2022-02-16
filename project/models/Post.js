@@ -13,7 +13,8 @@ const postSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId
     },
     date: {
-        type: Date
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -29,9 +30,19 @@ module.exports.getPostByID = async (id) => {
     }
 }
 
+module.exports.getPostByAuthorID = async (id) => {
+    try {
+        return await Post.find({author: id}).sort({ date: 'desc' }).exec();
+    }  
+    catch(e) {
+        console.error(e);
+        return null;
+    }
+}
+
 module.exports.getAllPosts = async () => {
     try {
-        return await Post.find();
+        return await Post.find().sort({ date: 'desc' }).exec();
     }
     catch(e) {
         console.log(e);
@@ -41,7 +52,7 @@ module.exports.getAllPosts = async () => {
 
 module.exports.getPostsByTitle = async (title) => {
     try {
-        return await Post.findOne({title: new RegExp('^'+ req.body.name + '$', "i")});
+        return await Post.find({title: new RegExp(title, "i")}).sort({ date: 'desc' }).exec();
     }  
     catch(e) {
         console.error(e);
@@ -52,8 +63,10 @@ module.exports.getPostsByTitle = async (title) => {
 module.exports.addPost = async (post) => {
     try {
         await post.save();
+        return true;
     }
     catch(e) {
         console.error(e);
+        return false;
     }
 }
