@@ -1,9 +1,10 @@
 # sds-full-stack
 The repository for the course: CT70A9140 Software Development Skills: Full-Stack
 
-# Locations
+# File Locations
 All modules are located in the "modules" folder
-The diary and video demo of the project are located in the "diary" folder
+The diary is located in the "diary" folder
+The video demo can be found here: https://drive.google.com/file/d/1SNDPJtTcmNZw_B7RLnVlU6n2eTGK6cqT/view?usp=sharing
 
 # Install instructions
 All modules need to have their dependencies installed before they can be ran.
