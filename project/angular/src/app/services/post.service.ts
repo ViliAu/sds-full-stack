@@ -18,21 +18,21 @@ export class PostService {
     let headers = new HttpHeaders({
       'Content-type': 'application/json',
     });
-    return this.http.get<any>('http://localhost:8080/posts?user='+id, {headers: headers});
+    return this.http.get<any>('/api/posts?user='+id, {headers: headers});
   }
 
   getAllPosts(): any {
     let headers = new HttpHeaders({
       'Content-type': 'application/json',
     });
-    return this.http.get('http://localhost:8080/posts', {headers: headers});
+    return this.http.get('/api/posts', {headers: headers});
   }
 
-  getPostsByTitle(title: string) {
+  getPostsByTitle(title: string|null) {
     let headers = new HttpHeaders({
       'Content-type': 'application/json',
     });
-    return this.http.get('http://localhost:8080/posts/'+title, {headers: headers});
+    return this.http.get('/api/posts/'+title, {headers: headers});
   }
 
   postPost(post: any) {
@@ -44,6 +44,6 @@ export class PostService {
       'Content-type': 'application/json',
       'Authorization': this.authService.authToken
     });
-    return this.http.post<any>('http://localhost:8080/posts', post, {headers: headers});
+    return this.http.post<any>('/api/posts', post, {headers: headers});
   }
 }

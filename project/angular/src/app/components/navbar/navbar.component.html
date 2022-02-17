@@ -17,7 +17,7 @@
                     <a class="nav-link" routerLink="/posts">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <form class="nav-item form-inline navbar-collapse" (submit)="onSearch()">
+                    <form class="nav-item form-inline navbar-collapse" (submit)="onSearch()" autocomplete="off">
                         <input class="form-control me-sm-2" type="text" placeholder="Search for posts" [(ngModel)]="searchTerm" name="searchTerm">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>

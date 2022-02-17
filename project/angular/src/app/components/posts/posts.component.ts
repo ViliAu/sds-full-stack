@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  searchTerm: string;
+  searchTerm: string | null;
   title: string;
   body: string;
 
@@ -28,8 +28,8 @@ export class PostsComponent implements OnInit {
   }
 
   private initPosts() {
-    this.searchTerm = String(this.route.snapshot.paramMap.get('title'));
-    if (this.searchTerm != "null") {
+    this.searchTerm = this.route.snapshot.queryParamMap.get("filter");
+    if (this.searchTerm != null) {
       this.postService.getPostsByTitle(this.searchTerm).subscribe((res: any) => {
         this.posts = res.posts;
       });

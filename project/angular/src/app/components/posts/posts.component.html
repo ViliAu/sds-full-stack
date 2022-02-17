@@ -1,6 +1,6 @@
 <div *ngIf="authService.loggedIn()" id="new-post-container">
     <h2>What's on your mind?</h2>
-    <form class="form-post" (submit)="onPostSubmit()">
+    <form class="form-post" (submit)="onPostSubmit()" autocomplete="off">
         <div class="form-group">
             <label for="Title">Title</label>
             <input type="text" class="form-control" placeholder=" Post Title (min. 3 characters)" [(ngModel)]="title"

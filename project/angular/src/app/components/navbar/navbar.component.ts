@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearch() {
-    //this.router.navigate(['posts/' + this.searchTerm]);
-    window.location.href = 'posts/' + this.searchTerm;
+    if (this.searchTerm.length > 0)
+      window.location.href = 'posts?filter=' + this.searchTerm;
   }
 }

@@ -1,6 +1,6 @@
 <div>
     <h2 class="page-header">Register</h2>
-    <form (submit)="onRegisterSubmit()">
+    <form (submit)="onRegisterSubmit()" autocomplete="off">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" [(ngModel)]="name" name="name" class="form-control" id="name" placeholder="Enter Name">
